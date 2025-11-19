@@ -1,0 +1,38 @@
+Comandos para ver status
+  kind create cluster --config cluster.yaml
+  kubectl get nodes
+  kubectl get pods
+  kubectl get namespace
+  kubectl get pods -n kube-system
+  kubectl get pods -n kube-system -o wide
+  kubectl get pods -n kube-system -o
+  kubectl get deployment
+  kubectl get replicaset
+  kubectl get service -n kube-system
+  kubectl exec -ti <pod> -- bash
+
+Comados para o bash completion
+
+  apt install bash-completion
+  kubectl completion --help
+  kubectl completion bash > ~/.kube/completion.bash.inc
+  echo "source '$HOME/.kube/completion.bash.inc" >> $HOME/.bash_profile
+  vim /root/.bash_profile
+  source /root/.bash_profile
+
+  Comandos para criar run
+
+  kubectl run --image nginx --port 80 -n giropops
+  kubectl run --image nginx --port 80 --name giropops
+  kubectl run --image nginx --port 80 -name giropops
+  kubectl run --image nginx --port 80  giropops
+  
+Fazendo o dry run para criar o yaml
+
+kubectl run --image nginx --port 80 giropops --dry-run=client -o yaml > pod.yaml
+
+kubectl apply -f pod.yaml
+
+# Criando cluster usando o kind com pod nginx
+
+kind create cluster --config kind-multinode-cluster.yaml
